@@ -1,0 +1,201 @@
+fileFormatVersion: 2
+guid: 4e5ed3ec6443e3744b316d9a26dbc0be
+timeCreated: 1470289895
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: depositphotos_8317993-Cartoon-soldier-icons-set_2
+    21300002: depositphotos_8317993-Cartoon-soldier-icons-set_0
+    21300004: depositphotos_8317993-Cartoon-soldier-icons-set_1
+    21300006: depositphotos_8317993-Cartoon-soldier-icons-set_3
+    21300008: depositphotos_8317993-Cartoon-soldier-icons-set_4
+    21300010: depositphotos_8317993-Cartoon-soldier-icons-set_5
+    21300012: depositphotos_8317993-Cartoon-soldier-icons-set_6
+    21300014: depositphotos_8317993-Cartoon-soldier-icons-set_7
+    21300016: depositphotos_8317993-Cartoon-soldier-icons-set_8
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: -1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: depositphotos_8317993-Cartoon-soldier-icons-set_2
+      rect:
+        serializedVersion: 2
+        x: 536
+        y: 701
+        width: 186
+        height: 276
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -93, y: 138}
+        - {x: -93, y: -138}
+        - {x: 93, y: -138}
+        - {x: 93, y: 138}
+    - name: depositphotos_8317993-Cartoon-soldier-icons-set_0
+      rect:
+        serializedVersion: 2
+        x: 307
+        y: 704
+        width: 186
+        height: 276
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -93, y: 138}
+        - {x: -93, y: -138}
+        - {x: 93, y: -138}
+        - {x: 93, y: 138}
+    - name: depositphotos_8317993-Cartoon-soldier-icons-set_1
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 704
+        width: 186
+        height: 276
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -93, y: 138}
+        - {x: -93, y: -138}
+        - {x: 93, y: -138}
+        - {x: 93, y: 138}
+    - name: depositphotos_8317993-Cartoon-soldier-icons-set_3
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 386
+        width: 186
+        height: 276
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -93, y: 138}
+        - {x: -93, y: -138}
+        - {x: 93, y: -138}
+        - {x: 93, y: 138}
+    - name: depositphotos_8317993-Cartoon-soldier-icons-set_4
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 61
+        width: 186
+        height: 276
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -93, y: 138}
+        - {x: -93, y: -138}
+        - {x: 93, y: -138}
+        - {x: 93, y: 138}
+    - name: depositphotos_8317993-Cartoon-soldier-icons-set_5
+      rect:
+        serializedVersion: 2
+        x: 302
+        y: 398
+        width: 186
+        height: 276
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -93, y: 138}
+        - {x: -93, y: -138}
+        - {x: 93, y: -138}
+        - {x: 93, y: 138}
+    - name: depositphotos_8317993-Cartoon-soldier-icons-set_6
+      rect:
+        serializedVersion: 2
+        x: 315
+        y: 53
+        width: 186
+        height: 290
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -93, y: 145}
+        - {x: -93, y: -145}
+        - {x: 93, y: -145}
+        - {x: 93, y: 145}
+    - name: depositphotos_8317993-Cartoon-soldier-icons-set_7
+      rect:
+        serializedVersion: 2
+        x: 541
+        y: 53
+        width: 186
+        height: 290
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -93, y: 145}
+        - {x: -93, y: -145}
+        - {x: 93, y: -145}
+        - {x: 93, y: 145}
+    - name: depositphotos_8317993-Cartoon-soldier-icons-set_8
+      rect:
+        serializedVersion: 2
+        x: 541
+        y: 394
+        width: 186
+        height: 290
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -93, y: 145}
+        - {x: -93, y: -145}
+        - {x: 93, y: -145}
+        - {x: 93, y: 145}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
