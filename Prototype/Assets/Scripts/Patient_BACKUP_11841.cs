@@ -2,6 +2,7 @@
 using System.Collections;
 
 public class Patient : MonoBehaviour {
+<<<<<<< HEAD
 	private Vector3 screenPoint;
 	private Vector3 offset;
 	private Collision col;
@@ -52,6 +53,7 @@ public class Patient : MonoBehaviour {
 
 	}
 		
+=======
 
 	public int injury=1; //0 for none, 1 - 3 injury
 	public float health=500;
@@ -95,4 +97,5 @@ public class Patient : MonoBehaviour {
 		health += x;
 	
 	}
+>>>>>>> e62cd4738a78c0ffc487b58cf3e1dc19af0ec63f
 }
