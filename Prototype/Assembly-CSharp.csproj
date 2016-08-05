@@ -186,6 +186,7 @@
      <Compile Include="Assets\Scripts\PathFinding\Grid.cs" />
      <Compile Include="Assets\Scripts\PathFinding\Node.cs" />
      <Compile Include="Assets\Scripts\PathFinding\Pathfinding.cs" />
+     <Compile Include="Assets\Scripts\PlayerManager.cs" />
      <Compile Include="Assets\Scripts\UI\PlayButton.cs" />
      <None Include="Assets\NGUI\Examples\Shaders\Unlit - Depth Cutout.shader" />
      <None Include="Assets\NGUI\ReadMe - 3.9.8.txt" />

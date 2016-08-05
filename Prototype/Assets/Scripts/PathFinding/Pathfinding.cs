@@ -4,11 +4,8 @@ using System.Collections.Generic;
 
 public class Pathfinding : MonoBehaviour {
 
-	public float speed;
 	public LayerMask targetLayer;
 	public float percentage = 50f;
-
-	[HideInInspector]public GameObject targets;
 
 	private GameObject playerGameObject;
 	private List<Node> pathPlayer= new List<Node> ();
@@ -18,23 +15,17 @@ public class Pathfinding : MonoBehaviour {
 
 
 	void Awake() {
-		grid = GameObject.Find("findPath").GetComponent<Grid>();
+		grid = GameObject.Find("GameManager").GetComponent<Grid>();
 
 		playerGameObject = GameObject.FindGameObjectWithTag ("Player");
-		targets = GameObject.FindGameObjectWithTag ("Patient");
-	}
+	}		
 
-	void Start(){
-		MovePlayer(playerGameObject,targets.transform.position,speed,1);
-	}
-		
-
-	public void MovePlayer (GameObject source, Vector3 destination, float sourceSpeed, int index){
+	public void MovePlayer (GameObject source, GameObject destination, float sourceSpeed, int index){
 		FindPath (source,destination, index);
 		StartCoroutine (MovePlayerTransition (source, destination, sourceSpeed));
 	}
 
-	IEnumerator MovePlayerTransition(GameObject source, Vector3 destination, float sourceSpeed){
+	IEnumerator MovePlayerTransition(GameObject source, GameObject destination, float sourceSpeed){
 		for (int i = 0; i < pathPlayer.Count; i++) {
 			while (Vector3.Distance (source.transform.position, pathPlayer[i].worldPosition) > 0.001f) {
 				source.transform.position = Vector3.MoveTowards(source.transform.position, pathPlayer[i].worldPosition, sourceSpeed*Time.deltaTime);
@@ -42,22 +33,21 @@ public class Pathfinding : MonoBehaviour {
 			}
 			if(i==pathPlayer.Count-1 && Physics.CheckSphere(source.transform.position, 0.5f, targetLayer)){
 				Collider[] cols = Physics.OverlapSphere (source.transform.position, 0.5f, targetLayer);
-
 				yield return 0;
 				break;
 			}
 		}
-			//GameManager.instance.playerIsMoving = false;
+		PlayerManager.instance.playerIsMoving = false;
 	}
 
 		
 
 
-	void FindPath(GameObject startPos, Vector3 targetPos, int index) {
+	void FindPath(GameObject startPos, GameObject targetPos, int index) {
 		
 		Node startNode = grid.NodeFromWorldPoint(startPos.transform.position);
 
-		Node targetNode = grid.NodeFromWorldPoint(targetPos);
+		Node targetNode = grid.NodeFromWorldPoint(targetPos.transform.position);
 
 		List<Node> openSet = new List<Node>();
 		HashSet<Node> closedSet = new HashSet<Node>();
