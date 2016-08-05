@@ -1,18 +1,18 @@
 fileFormatVersion: 2
 guid: 4e5ed3ec6443e3744b316d9a26dbc0be
-timeCreated: 1470289895
+timeCreated: 1470379076
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: depositphotos_8317993-Cartoon-soldier-icons-set_2
-    21300002: depositphotos_8317993-Cartoon-soldier-icons-set_0
-    21300004: depositphotos_8317993-Cartoon-soldier-icons-set_1
-    21300006: depositphotos_8317993-Cartoon-soldier-icons-set_3
-    21300008: depositphotos_8317993-Cartoon-soldier-icons-set_4
-    21300010: depositphotos_8317993-Cartoon-soldier-icons-set_5
-    21300012: depositphotos_8317993-Cartoon-soldier-icons-set_6
-    21300014: depositphotos_8317993-Cartoon-soldier-icons-set_7
-    21300016: depositphotos_8317993-Cartoon-soldier-icons-set_8
+    21300000: s3
+    21300002: s2
+    21300004: s1
+    21300006: s4
+    21300008: s7
+    21300010: s5
+    21300012: s8
+    21300014: s9
+    21300016: s6
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -59,7 +59,7 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     sprites:
-    - name: depositphotos_8317993-Cartoon-soldier-icons-set_2
+    - name: s3
       rect:
         serializedVersion: 2
         x: 536
@@ -74,7 +74,7 @@ TextureImporter:
         - {x: -93, y: -138}
         - {x: 93, y: -138}
         - {x: 93, y: 138}
-    - name: depositphotos_8317993-Cartoon-soldier-icons-set_0
+    - name: s2
       rect:
         serializedVersion: 2
         x: 307
@@ -89,7 +89,7 @@ TextureImporter:
         - {x: -93, y: -138}
         - {x: 93, y: -138}
         - {x: 93, y: 138}
-    - name: depositphotos_8317993-Cartoon-soldier-icons-set_1
+    - name: s1
       rect:
         serializedVersion: 2
         x: 68
@@ -104,7 +104,7 @@ TextureImporter:
         - {x: -93, y: -138}
         - {x: 93, y: -138}
         - {x: 93, y: 138}
-    - name: depositphotos_8317993-Cartoon-soldier-icons-set_3
+    - name: s4
       rect:
         serializedVersion: 2
         x: 68
@@ -119,7 +119,7 @@ TextureImporter:
         - {x: -93, y: -138}
         - {x: 93, y: -138}
         - {x: 93, y: 138}
-    - name: depositphotos_8317993-Cartoon-soldier-icons-set_4
+    - name: s7
       rect:
         serializedVersion: 2
         x: 72
@@ -134,7 +134,7 @@ TextureImporter:
         - {x: -93, y: -138}
         - {x: 93, y: -138}
         - {x: 93, y: 138}
-    - name: depositphotos_8317993-Cartoon-soldier-icons-set_5
+    - name: s5
       rect:
         serializedVersion: 2
         x: 302
@@ -149,7 +149,7 @@ TextureImporter:
         - {x: -93, y: -138}
         - {x: 93, y: -138}
         - {x: 93, y: 138}
-    - name: depositphotos_8317993-Cartoon-soldier-icons-set_6
+    - name: s8
       rect:
         serializedVersion: 2
         x: 315
@@ -164,7 +164,7 @@ TextureImporter:
         - {x: -93, y: -145}
         - {x: 93, y: -145}
         - {x: 93, y: 145}
-    - name: depositphotos_8317993-Cartoon-soldier-icons-set_7
+    - name: s9
       rect:
         serializedVersion: 2
         x: 541
@@ -179,7 +179,7 @@ TextureImporter:
         - {x: -93, y: -145}
         - {x: 93, y: -145}
         - {x: 93, y: 145}
-    - name: depositphotos_8317993-Cartoon-soldier-icons-set_8
+    - name: s6
       rect:
         serializedVersion: 2
         x: 541

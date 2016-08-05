@@ -186,11 +186,13 @@
      <Compile Include="Assets\Scripts\PathFinding\Grid.cs" />
      <Compile Include="Assets\Scripts\PathFinding\Node.cs" />
      <Compile Include="Assets\Scripts\PathFinding\Pathfinding.cs" />
+     <Compile Include="Assets\Scripts\Patient.cs" />
      <Compile Include="Assets\Scripts\PlayerManager.cs" />
      <Compile Include="Assets\Scripts\UI\PauseButton.cs" />
      <Compile Include="Assets\Scripts\UI\PlayButton.cs" />
      <Compile Include="Assets\Scripts\UI\QuitButton.cs" />
      <Compile Include="Assets\Scripts\UI\ResumeButton.cs" />
+     <Compile Include="Assets\Scripts\UI\UIManager.cs" />
      <None Include="Assets\NGUI\Examples\Shaders\Unlit - Depth Cutout.shader" />
      <None Include="Assets\NGUI\ReadMe - 3.9.8.txt" />
      <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Masked 1.shader" />
