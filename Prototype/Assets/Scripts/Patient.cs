@@ -18,39 +18,7 @@ public class Patient : MonoBehaviour {
 
 
 
-	void Update(){
-		PlayerManager.instance.playerIsMoving = b;
 
-		if (Input.GetMouseButtonDown (0) && b) {
-			ray = Camera.main.ScreenPointToRay (Input.mousePosition);
-
-			if(Physics.Raycast(ray, out rayHit)) {
-				bed = rayHit.collider.gameObject;
-				Debug.Log("BED=----"+bed.tag+bed.name);
-				if ((bed.tag == "Target" || bed.tag == "Target") && !bed.GetComponent<Bed>().mayTao) {
-					transform.position = bed.transform.position;
-					b=false;
-					onBed=true;
-				} 
-			}
-		}
-		else if (Input.GetMouseButtonDown (0) && !onBed) {
-			
-			ray = Camera.main.ScreenPointToRay (Input.mousePosition);
-
-			if(Physics.Raycast(ray, out rayHit)) {
-				clicked = rayHit.collider.gameObject;
-				Debug.Log (clicked.tag);
-				if (clicked == this.gameObject) {
-					b=true;
-				}else{
-					b=false;
-				}
-			}
-		}
-
-
-	}
 		
 
 	public int injury=1; //0 for none, 1 - 3 injury
@@ -77,6 +45,40 @@ public class Patient : MonoBehaviour {
 	}
 
 	void Update(){
+
+		PlayerManager.instance.playerIsMoving = b;
+
+		if (Input.GetMouseButtonDown (0) && b) {
+			ray = Camera.main.ScreenPointToRay (Input.mousePosition);
+
+			if(Physics.Raycast(ray, out rayHit)) {
+				bed = rayHit.collider.gameObject;
+				Debug.Log("BED=----"+bed.tag+bed.name);
+				if ((bed.tag == "Target" || bed.tag == "Target") && !bed.GetComponent<Bed>().mayTao) {
+					transform.position = bed.transform.position;
+					b=false;
+					onBed=true;
+				} 
+			}
+		}
+		else if (Input.GetMouseButtonDown (0) && !onBed) {
+
+			ray = Camera.main.ScreenPointToRay (Input.mousePosition);
+
+			if(Physics.Raycast(ray, out rayHit)) {
+				clicked = rayHit.collider.gameObject;
+				Debug.Log (clicked.tag);
+				if (clicked == this.gameObject) {
+					b=true;
+				}else{
+					b=false;
+				}
+			}
+		}
+
+
+
+
 		health -= rateOfDeath * Time.deltaTime;
 		Debug.Log (health);
 		if (health < 300)

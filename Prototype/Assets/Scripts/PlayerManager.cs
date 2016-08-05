@@ -41,11 +41,24 @@ public class PlayerManager : MonoBehaviour {
 					Debug.Log (clicked.tag);
 					if (clicked.tag == "Target" || clicked.tag == "Target") {
 						playerIsMoving = true;
-						pathFinding.MovePlayer (player, clicked, speedPlayer, -1);
+						//pathFinding.MovePlayer (player, clicked, speedPlayer, -1);
+						StartCoroutine("TeleportPlayer",clicked.transform.position);
 					} 
 				}
 			}
 		}
+	}
+
+	IEnumerator TeleportPlayer(Vector3 des){
+		yield return new WaitForSeconds (2f);
+		while (Vector3.Distance (transform.position, des) > 0.001f) {
+			transform.position = Vector3.MoveTowards(transform.position, des, speedPlayer*Time.deltaTime);
+			yield return 0;
+		
+		}
+
+		playerIsMoving = false;
+
 	}
 }
 
