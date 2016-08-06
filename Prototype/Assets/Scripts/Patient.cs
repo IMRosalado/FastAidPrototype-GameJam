@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class Patient : MonoBehaviour {
-	public int injury=1; //0 for none, 1 - 3 injury
+	[HideInInspector]public int injury; //0 for none, 1 - 3 injury
 	public float health=500;
 	public int rateOfDeath=20;
 	public bool isWaiting = true;
@@ -26,11 +26,12 @@ public class Patient : MonoBehaviour {
 		
 	void OnEnable(){
 		rend.sprite = patientSprites [Random.Range (0, patientSprites.Length)];
+		injury = 2;
 		if (injury == 1) {
-			rend.color = new Color(0f,255f,0f);
+			rend.color = new Color(255f,255f,0f);
 			rateOfDeath = 5;
 		} else if (injury == 2) {
-			rend.color = new Color(0f,255f,255f);
+			rend.color = new Color(255f,0f,255f);
 			rateOfDeath = 10;
 		} else if (injury == 3) {
 			rend.color = new Color(255f,0f,0f);
@@ -52,6 +53,7 @@ public class Patient : MonoBehaviour {
 					transform.position = new Vector3(bed.transform.position.x,bed.transform.position.y,-1);
 					b=false;
 					onBed=true;
+					isWaiting = false;
 				} 
 			}
 		}
