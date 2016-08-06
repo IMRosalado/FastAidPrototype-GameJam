@@ -2,16 +2,16 @@
 using System.Collections;
 
 public class Bed : MonoBehaviour {
-	public bool mayTao=false;
+	public bool isOccupied=false;
 
 	void OnTriggerEnter(Collider x){
 		if (x.gameObject.tag=="Patient"){
-			mayTao=true;
+			isOccupied=true;
 		}
 	}
 	void OnTriggerExit(Collider x){
 		if (x.gameObject.tag=="Patient"){
-			mayTao=false;
+			isOccupied=false;
 		}
 	}
 
