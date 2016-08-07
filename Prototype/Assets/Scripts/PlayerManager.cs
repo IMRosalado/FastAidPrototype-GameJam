@@ -39,9 +39,10 @@ public class PlayerManager : MonoBehaviour {
 				if(Physics.Raycast(ray, out rayHit)) {
 					clicked = rayHit.collider.gameObject;
 					Debug.Log (clicked.tag);
-					if (clicked.tag == "Target" || clicked.tag == "Target") {
+					if (clicked.tag == "Bed" || clicked.tag == "Cure") {
 						playerIsMoving = true;
 						//pathFinding.MovePlayer (player, clicked, speedPlayer, -1);
+						Debug.Log("move");
 						StartCoroutine("TeleportPlayer",clicked.transform.position);
 					} 
 				}
@@ -50,7 +51,7 @@ public class PlayerManager : MonoBehaviour {
 	}
 
 	IEnumerator TeleportPlayer(Vector3 des){
-		yield return new WaitForSeconds (2f);
+		//yield return new WaitForSeconds (2f);
 		while (Vector3.Distance (transform.position, des) > 0.001f) {
 			transform.position = Vector3.MoveTowards(transform.position, des, speedPlayer*Time.deltaTime);
 			yield return 0;
