@@ -42,18 +42,20 @@ public class PlayerManager : MonoBehaviour {
 				if(Physics.Raycast(ray, out rayHit)) {
 					clicked = rayHit.collider.gameObject;
 					Debug.Log (clicked.tag);
-					if (clicked.tag == "Bed" || clicked.tag == "Cure") {
+					if (clicked.tag == "Bed" || clicked.tag == "Cure" || clicked.tag=="Patient") {
 						playerIsMoving = true;
 						//pathFinding.MovePlayer (player, clicked, speedPlayer, -1);
-						Debug.Log("move");
-						if (clicked.tag == "Cure") {
-							StartCoroutine(ShowBubble(clicked.GetComponent<TypeOfInjury>().type));
-						}
 						StartCoroutine("TeleportPlayer",clicked.transform.position);
+
+
 					} 
 				}
 			}
 		}
+	}
+
+	public void MoveMedic(GameObject x){
+		StartCoroutine("TeleportPlayer",x.transform.position);
 	}
 
 	IEnumerator TeleportPlayer(Vector3 des){
@@ -65,16 +67,30 @@ public class PlayerManager : MonoBehaviour {
 		}
 
 		playerIsMoving = false;
-
+		Collider[] hitColliders = Physics.OverlapSphere(transform.position, 0.1f);
+		for (int i = 0; i < hitColliders.Length; i++) {
+			if (hitColliders[i].gameObject.tag=="Patient"){
+				Debug.Log ("CURE!!!!");
+				rend.gameObject.SetActive (false);
+				hitColliders[i].gameObject.GetComponent<Patient>().curePatient ();
+			}if (hitColliders[i].gameObject.tag== "Cure") {
+				StartCoroutine(ShowBubble(clicked.GetComponent<TypeOfInjury>().type));
+			}
+		}
 	}
 
 
 
 	IEnumerator ShowBubble(int x){
-		rend.sprite = bubSprite [x];
-		rend.gameObject.SetActive (true);
-		yield return new WaitForSeconds (3f);
-		rend.gameObject.SetActive (false);
+				rend.sprite = bubSprite [x];
+				rend.gameObject.SetActive (true);
+			
+
+
+		yield return 0;
+	}
+	public void DontMove(){
+		StopCoroutine ("TeleportPlayer");
 	}
 }
 

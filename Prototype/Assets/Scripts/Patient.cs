@@ -20,8 +20,6 @@ public class Patient : MonoBehaviour {
 	[HideInInspector]public bool isClicked,onBed;
 	public GameObject player;
 	private GameObject clicked;
-	private GameObject cureObj;
-	private GameObject patientObj;
 	private Ray ray;
 	private RaycastHit rayHit;
 	public Injury pInjury;
@@ -48,23 +46,47 @@ public class Patient : MonoBehaviour {
 				rateOfDeath = 15;
 			} else
 				rend.color = new Color (255f, 255f, 255f);
+		player = GameObject.FindGameObjectWithTag ("Player");
 		
 	}
 
 	void Update(){
 		PlayerManager.instance.playerIsMoving =isClicked;
-
+		if (isClicked) {
+			rend.color = new Color (255f, 255f, 255f);
+		} else {
+			if (injury == 1) {
+				rend.color = new Color (255f, 255f, 0f);
+			} else if (injury == 2) {
+				rend.color = new Color (255f, 0f, 255f);
+			} else if (injury == 3) {
+				rend.color = new Color (255f, 0f, 0f);
+			}
+		}
 		if (Input.GetMouseButtonDown (0)) {
 			ray = Camera.main.ScreenPointToRay (Input.mousePosition);
 
 			if(Physics.Raycast(ray, out rayHit)) {
-				cureObj = rayHit.collider.gameObject;
-				if(cureObj.tag == "Cure"){
-					if (cureObj.GetComponent<TypeOfInjury> ().type == pInjury.type) {
+				clicked = rayHit.collider.gameObject;
+				//patientObj = rayHit.collider.gameObject;
+				if(clicked.tag == "Cure"){
+					if (clicked.GetComponent<TypeOfInjury> ().type == pInjury.type) {
 						pInjury.Cured = 1;
-
-						Debug.Log ("CURE = "+pInjury.Cured);
 					}
+				}else if ((clicked.tag == "Bed") && isClicked&& !clicked.GetComponent<Bed>().isOccupied) {
+					transform.position = new Vector3(clicked.transform.position.x,clicked.transform.position.y,-1);
+					isClicked=false;
+					onBed=true;
+					isWaiting = false;
+				} else if (clicked == this.gameObject && !onBed) {
+					player.GetComponent<PlayerManager> ().DontMove();
+					isClicked=true;
+				} else if (clicked == this.gameObject) {
+					if (pInjury.Cured==1) {
+						player.GetComponent<PlayerManager> ().MoveMedic (clicked);
+					}
+				}else{
+					isClicked=false;
 				}
 			}
 		}
@@ -75,63 +97,7 @@ public class Patient : MonoBehaviour {
 			showBubble ();
 			isWaiting = true;
 		}
-
-		if (Physics.Raycast (ray, out rayHit)) {
-			clicked = rayHit.collider.gameObject;
-			patientObj = rayHit.collider.gameObject;
-			 if ((clicked.tag == "Bed") && isClicked&& !clicked.GetComponent<Bed>().isOccupied) {
-				transform.position = new Vector3(clicked.transform.position.x,clicked.transform.position.y,-1);
-				isClicked=false;
-				onBed=true;
-				isWaiting = false;
-			} else if (patientObj == this.gameObject && !onBed) {
-				isClicked=true;
-			} else if (patientObj == this.gameObject) {
-				if (pInjury.Cured==1) {
-				player.transform.position = Vector3.MoveTowards(transform.position, patientObj.transform.position, Time.deltaTime*0.1f);
-					if(Vector3.Distance(player.transform.position,patientObj.transform.position)<=1f){
-					DestroyObject(this.gameObject);
-					}
-				}
-			}else{
-				isClicked=false;
-			}
-			//Debug.Log (pInjury.type);
-
-		}
-
-
-
-
-		if (Physics.Raycast (ray, out rayHit)) {
-			clicked = rayHit.collider.gameObject;
-			 if(clicked.tag == "Cure"){
-				Debug.Log ("BAM!  "+ clicked.GetComponent<TypeOfInjury> ().type + " "+pInjury.type);
-				if (clicked.GetComponent<TypeOfInjury> ().type == pInjury.type) {
-					pInjury.Cured = 1;
-
-					Debug.Log ("CURE = "+pInjury.Cured);
-				}
-			}else if ((clicked.tag == "Bed") && isClicked&& !clicked.GetComponent<Bed>().isOccupied) {
-				transform.position = new Vector3(clicked.transform.position.x,clicked.transform.position.y,-1);
-				isClicked=false;
-				onBed=true;
-				isWaiting = false;
-			} else if (clicked == this.gameObject && !onBed) {
-				isClicked=true;
-			} else if (clicked == this.gameObject) {
-				if (pInjury.Cured==1) {
-					DestroyObject(this.gameObject);
-				}
-			}else{
-				isClicked=false;
-			}
-			//Debug.Log (pInjury.type);
-		
-	}
-
-
-		
+			
 
 	}
 
@@ -146,7 +112,7 @@ public class Patient : MonoBehaviour {
 		if (health <= 0) {
 			Debug.Log ("DIE!");
 			UIManager.instance.loseLife ();
-			Destroy (gameObject);
+			destroyMe ();
 		}
 
 	}
@@ -166,5 +132,15 @@ public class Patient : MonoBehaviour {
 
 			bubbleRenderer.gameObject.SetActive (true);
 		}
+	}
+
+	public void curePatient(){
+		bubbleRenderer.gameObject.SetActive (false);
+		UIManager.instance.updateScore (100);
+		Invoke ("destroyMe",2f);
+
+	}
+	void destroyMe(){
+		Destroy (this.gameObject);
 	}
 }

@@ -1,14 +1,16 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Patient.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\UI\ScoreLabel.cs">
     <Files>
-      <File FileName="Assets\Scripts\EmergencyRoom.cs" Line="8" Column="28" />
+      <File FileName="Assets\Scripts\Patient.cs" Line="49" Column="56" />
+      <File FileName="Assets\Scripts\EmergencyRoom.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Bed.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Patient.cs" Line="89" Column="47" />
-      <File FileName="Assets\Scripts\PlayerManager.cs" Line="17" Column="4" />
-      <File FileName="Assets\Scripts\Injury.cs" Line="13" Column="12" />
-      <File FileName="Assets\Scripts\TypeOfInjury.cs" Line="7" Column="1" />
-      <File FileName="Assets\Scripts\PathFinding\Pathfinding.cs" Line="35" Column="1" />
+      <File FileName="Assets\Scripts\PlayerManager.cs" Line="93" Column="36" />
+      <File FileName="Assets\Scripts\Injury.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\TypeOfInjury.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\PathFinding\Pathfinding.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\UI\UIManager.cs" Line="24" Column="40" />
+      <File FileName="Assets\Scripts\UI\ScoreLabel.cs" Line="13" Column="84" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
