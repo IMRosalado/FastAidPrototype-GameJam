@@ -14,6 +14,9 @@ public class PlayerManager : MonoBehaviour {
 	private GameObject clicked;
 	private Ray ray;
 	private RaycastHit rayHit;
+	//public GameObject bubble;
+	public Sprite[] bubSprite;
+	public SpriteRenderer rend;
 
 
 	void Awake () {
@@ -43,6 +46,9 @@ public class PlayerManager : MonoBehaviour {
 						playerIsMoving = true;
 						//pathFinding.MovePlayer (player, clicked, speedPlayer, -1);
 						Debug.Log("move");
+						if (clicked.tag == "Cure") {
+							StartCoroutine(ShowBubble(clicked.GetComponent<TypeOfInjury>().type));
+						}
 						StartCoroutine("TeleportPlayer",clicked.transform.position);
 					} 
 				}
@@ -60,6 +66,15 @@ public class PlayerManager : MonoBehaviour {
 
 		playerIsMoving = false;
 
+	}
+
+
+
+	IEnumerator ShowBubble(int x){
+		rend.sprite = bubSprite [x];
+		rend.gameObject.SetActive (true);
+		yield return new WaitForSeconds (3f);
+		rend.gameObject.SetActive (false);
 	}
 }
 
