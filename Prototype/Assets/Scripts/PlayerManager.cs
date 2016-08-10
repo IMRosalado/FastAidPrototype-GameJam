@@ -41,7 +41,6 @@ public class PlayerManager : MonoBehaviour {
 
 				if(Physics.Raycast(ray, out rayHit)) {
 					clicked = rayHit.collider.gameObject;
-					Debug.Log (clicked.tag);
 					if (clicked.tag == "Bed" || clicked.tag == "Cure" || clicked.tag=="Patient") {
 						playerIsMoving = true;
 						//pathFinding.MovePlayer (player, clicked, speedPlayer, -1);
@@ -70,7 +69,6 @@ public class PlayerManager : MonoBehaviour {
 		Collider[] hitColliders = Physics.OverlapSphere(transform.position, 0.1f);
 		for (int i = 0; i < hitColliders.Length; i++) {
 			if (hitColliders[i].gameObject.tag=="Patient"){
-				Debug.Log ("CURE!!!!");
 				rend.gameObject.SetActive (false);
 				hitColliders[i].gameObject.GetComponent<Patient>().curePatient ();
 			}if (hitColliders[i].gameObject.tag== "Cure") {
