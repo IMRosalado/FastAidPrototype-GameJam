@@ -137,6 +137,7 @@ public class Patient : MonoBehaviour {
 	public void curePatient(){
 		bubbleRenderer.gameObject.SetActive (false);
 		UIManager.instance.updateScore (100);
+
 		Invoke ("destroyMe",2f);
 
 	}

@@ -17,6 +17,7 @@ public class PlayerManager : MonoBehaviour {
 	//public GameObject bubble;
 	public Sprite[] bubSprite;
 	public SpriteRenderer rend;
+	private bool doesCarry=false;
 
 
 	void Awake () {
@@ -68,10 +69,12 @@ public class PlayerManager : MonoBehaviour {
 		playerIsMoving = false;
 		Collider[] hitColliders = Physics.OverlapSphere(transform.position, 0.1f);
 		for (int i = 0; i < hitColliders.Length; i++) {
-			if (hitColliders[i].gameObject.tag=="Patient"){
+			if (hitColliders[i].gameObject.tag=="Patient" && doesCarry){
 				rend.gameObject.SetActive (false);
+				doesCarry =false;
 				hitColliders[i].gameObject.GetComponent<Patient>().curePatient ();
 			}if (hitColliders[i].gameObject.tag== "Cure") {
+				doesCarry =true;
 				StartCoroutine(ShowBubble(clicked.GetComponent<TypeOfInjury>().type));
 			}
 		}
