@@ -77,23 +77,19 @@ public class Patient : MonoBehaviour {
 			if(Physics.Raycast(ray, out rayHit)) {
 				clicked = rayHit.collider.gameObject;
 				//patientObj = rayHit.collider.gameObject;
-				if(clicked.tag == "Cure"){
-					if (clicked.GetComponent<TypeOfInjury> ().type == pInjury.type) {
+				if(clicked.tag == "Cure"){ //checks if the clicked object is a medicine
+					if (clicked.GetComponent<TypeOfInjury> ().type == pInjury.type) { //checks if the cure is correct for the injury
 						pInjury.Cured = 1;
 					}
-				}else if ((clicked.tag == "Bed") && isClicked&& !clicked.GetComponent<Bed>().isOccupied) {
+				}else if ((clicked.tag == "Bed") && isClicked&& !clicked.GetComponent<Bed>().isOccupied) { //checks if the clicked obejct is a bed and occupide
 					transform.position = new Vector3(clicked.transform.position.x,clicked.transform.position.y,-1);
 					isClicked=false;
 					onBed=true;
 					isWaiting = false;
-				} else if (clicked == this.gameObject && !onBed) {
+				} else if (clicked == this.gameObject && !onBed) { //checks if the patient is on bed
 					player.GetComponent<PlayerManager> ().DontMove();
 					isClicked=true;
-				} else if (clicked == this.gameObject) {
-					if (pInjury.Cured==1) {
-						player.GetComponent<PlayerManager> ().MoveMedic (clicked);
-					}
-				}else{
+				} else{
 					isClicked=false;
 				}
 			}

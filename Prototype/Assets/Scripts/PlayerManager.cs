@@ -99,7 +99,9 @@ public class PlayerManager : MonoBehaviour {
 			if (hitColliders[i].gameObject.tag=="Patient" && doesCarry){
 				rend.gameObject.SetActive (false);
 				doesCarry =false;
+				if(hitColliders[i].gameObject.GetComponent<Patient>().pInjury.Cured == 1){
 				hitColliders[i].gameObject.GetComponent<Patient>().curePatient ();
+				}
 			}if (hitColliders[i].gameObject.tag== "Cure") {
 				doesCarry =true;
 				ShowBubble(clicked.GetComponent<TypeOfInjury>().type);

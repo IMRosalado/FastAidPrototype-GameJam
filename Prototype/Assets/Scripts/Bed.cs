@@ -9,20 +9,19 @@ using UnityEngine;
 using System.Collections;
 
 public class Bed : MonoBehaviour {
-	public bool isOccupied=false;
+	public bool isOccupied=false; // boolean if the bed is occupied by a patient
 
-	void OnTriggerEnter(Collider x){
+	#region Monobehavior
+	void OnTriggerEnter(Collider x){ //colission detection
 		if (x.gameObject.tag=="Patient"){
 			isOccupied=true;
 		}
 	}
 	void OnTriggerExit(Collider x){
-		if (x.gameObject.tag=="Patient"){
+		if (x.gameObject.tag=="Patient"){//collision exit
 			isOccupied=false;
 		}
 	}
-
-	void Update(){
-	}
+	#endregion
 }
 	
