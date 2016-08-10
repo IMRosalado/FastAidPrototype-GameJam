@@ -1,9 +1,19 @@
-﻿using UnityEngine;
+﻿/*Patient.cs
+ * Author: Isabela Rosalado and Alvin Carpio
+ * 
+ * This script handles the patient mechanics like randomly generating the injury type and priority level
+ * 
+ * 
+ * */
+using UnityEngine;
 using System.Collections;
 
 public class Patient : MonoBehaviour {
+	
+	[HideInInspector]public bool isClicked,onBed;
 	[HideInInspector]public int injury; //0 for none, 1 - 3 injury
 	[HideInInspector]public int injured;
+	public GameObject player;
 	public float health=500;
 	public int rateOfDeath=20;
 	public bool isWaiting = true;
@@ -12,18 +22,16 @@ public class Patient : MonoBehaviour {
 	public Sprite[] patientSprites;
 	public Sprite[] injurySprites;
 	public string injuryType;
-
+	public Injury pInjury;
 
 	private Vector3 screenPoint;
 	private Vector3 offset;
 	private Collision col;
-	[HideInInspector]public bool isClicked,onBed;
-	public GameObject player;
 	private GameObject clicked;
 	private Ray ray;
 	private RaycastHit rayHit;
-	public Injury pInjury;
 
+	#region Monobehaviour
 	void Awake(){
 		isClicked=false;
 		onBed=false;
@@ -32,7 +40,7 @@ public class Patient : MonoBehaviour {
 		}
 		
 	void OnEnable(){
-			rend.sprite = patientSprites [Random.Range (0, patientSprites.Length)];
+		rend.sprite = patientSprites [Random.Range (0, patientSprites.Length)];
 		injury = Random.Range (1, 4);
 	
 			if (injury == 1) {
@@ -51,7 +59,7 @@ public class Patient : MonoBehaviour {
 	}
 
 	void Update(){
-		PlayerManager.instance.playerIsMoving =isClicked;
+		PlayerManager.instance.playerIsMoving = isClicked;
 		if (isClicked) {
 			rend.color = new Color (255f, 255f, 255f);
 		} else {
@@ -100,7 +108,9 @@ public class Patient : MonoBehaviour {
 			
 
 	}
+	#endregion
 
+	#region health
 	public void addHealth(float x){
 		health += x;
 	
@@ -116,6 +126,7 @@ public class Patient : MonoBehaviour {
 		}
 
 	}
+	#endregion
 	private void showBubble(){
 		if (injured == 0) {
 			int randNum = Random.Range (0, injurySprites.Length);

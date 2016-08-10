@@ -1,4 +1,12 @@
-﻿using UnityEngine;
+﻿/*ResumeButton.cs
+ * Author: Isabela Rosalado
+ * 
+ * This script resumes the gameplay
+ * 
+ * 
+ * */
+
+using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
 

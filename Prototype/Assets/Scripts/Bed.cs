@@ -1,4 +1,11 @@
-﻿using UnityEngine;
+﻿/*Bed.cs
+ * Author: Alvin Carpio
+ * 
+ * This script handles the bed to determine if it is occupied or not
+ * 
+ * 
+ * */
+using UnityEngine;
 using System.Collections;
 
 public class Bed : MonoBehaviour {

@@ -1,4 +1,11 @@
-﻿using UnityEngine;
+﻿/*spawn.cs
+ * Author: Alvin Carpio
+ * 
+ * This script manages how and when the patients spawn on the level
+ * 
+ * 
+ * */
+using UnityEngine;
 using System.Collections;
 
 public class spawn : MonoBehaviour {

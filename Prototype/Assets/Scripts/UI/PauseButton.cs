@@ -1,4 +1,11 @@
-﻿using UnityEngine;
+﻿/*PauseButton.cs
+ * Author: Isabela Rosalado
+ * 
+ * This script handles the Pause Button in the game
+ *
+ * 
+ * */
+using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
 

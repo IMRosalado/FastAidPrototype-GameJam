@@ -1,4 +1,13 @@
-﻿using UnityEngine;
+﻿/*EmergencyRoom.cs
+ * Author: Isabela Rosalado
+ * 
+ * This script handles the EmergencyRoom mechanic
+ * 
+ * 
+ * This script is not yet complete
+ * 
+ * */
+using UnityEngine;
 using System.Collections;
 
 public class EmergencyRoom : MonoBehaviour {
