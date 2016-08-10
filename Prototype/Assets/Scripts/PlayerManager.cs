@@ -9,6 +9,8 @@ public class PlayerManager : MonoBehaviour {
 	public float speedPlayer = 3f;
 	public Pathfinding pathFinding;
 	[HideInInspector]public bool playerIsMoving = false;
+	public SpriteRenderer rendPlayer;
+	public Sprite[] playerSprites;
 
 	private GameObject player;
 	private GameObject clicked;
@@ -29,6 +31,10 @@ public class PlayerManager : MonoBehaviour {
 		//DontDestroyOnLoad (gameObject);
 		pathFinding = GameObject.Find ("GameManager").GetComponent<Pathfinding> ();
 		player = GameObject.FindGameObjectWithTag ("Player");
+	}
+	void Start(){
+		LoadPlayer ();
+
 	}
 	void Update () {
 		MovePlayer ();
@@ -92,6 +98,18 @@ public class PlayerManager : MonoBehaviour {
 	}
 	public void DontMove(){
 		StopCoroutine ("TeleportPlayer");
+	}
+
+	void LoadPlayer(){
+		string x = PlayerPrefs.GetString ("GENDER");
+		if (x == "Female") {
+			rendPlayer.sprite = playerSprites [0];
+			speedPlayer = 3f;
+		} else {
+			rendPlayer.sprite = playerSprites [1];
+			speedPlayer = 5f;
+		}
+
 	}
 }
 
