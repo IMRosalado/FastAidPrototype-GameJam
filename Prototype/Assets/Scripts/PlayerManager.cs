@@ -26,6 +26,7 @@ public class PlayerManager : MonoBehaviour {
 	public Sprite[] bubSprite;
 	public SpriteRenderer rend;
 	private bool doesCarry=false;
+	private string cureType="";
 
 	#region Monobehaviour
 	void Awake () {
@@ -60,6 +61,7 @@ public class PlayerManager : MonoBehaviour {
 				if(Physics.Raycast(ray, out rayHit)) {
 					clicked = rayHit.collider.gameObject;
 					if (clicked.tag == "Bed" || clicked.tag == "Cure" || clicked.tag=="Patient") {
+
 						playerIsMoving = true;
 						//pathFinding.MovePlayer (player, clicked, speedPlayer, -1);
 						StartCoroutine("TeleportPlayer",clicked.transform.position);
@@ -99,12 +101,15 @@ public class PlayerManager : MonoBehaviour {
 			if (hitColliders[i].gameObject.tag=="Patient" && doesCarry){
 				rend.gameObject.SetActive (false);
 				doesCarry =false;
-				if(hitColliders[i].gameObject.GetComponent<Patient>().pInjury.Cured == 1){
+				if(hitColliders[i].gameObject.GetComponent<Patient>().pInjury.type == cureType){
+					Debug.Log(hitColliders[i].gameObject.GetComponent<Patient>().pInjury.type+"+++"+cureType);
 				hitColliders[i].gameObject.GetComponent<Patient>().curePatient ();
+					cureType ="";
 				}
 			}if (hitColliders[i].gameObject.tag== "Cure") {
 				doesCarry =true;
-				ShowBubble(clicked.GetComponent<TypeOfInjury>().type);
+				cureType=clicked.GetComponent<TypeOfInjury>().type;
+				ShowBubble(cureType);
 			}
 		}
 	}
@@ -126,8 +131,15 @@ public class PlayerManager : MonoBehaviour {
 	 * return: none
 	 * 
 	 * */
-	void ShowBubble(int x){
-		rend.sprite = bubSprite [x];
+	void ShowBubble(string x){
+		Debug.Log("++++"+x);
+		if (x=="gunshot") {
+			rend.sprite = bubSprite [1];
+		} else if (x=="brokenBone") {
+			rend.sprite = bubSprite [0];
+		} else if (x=="burn") {
+			rend.sprite = bubSprite [2];
+		}
 		rend.gameObject.SetActive (true);
 	}
 	/* This function is called at the start of the scene to render the player sprite and speed

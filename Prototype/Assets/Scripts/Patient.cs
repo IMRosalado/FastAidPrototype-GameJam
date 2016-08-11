@@ -30,13 +30,14 @@ public class Patient : MonoBehaviour {
 	private GameObject clicked;
 	private Ray ray;
 	private RaycastHit rayHit;
+	private GameObject clickedCure;
 
 	#region Monobehaviour
 	void Awake(){
 		isClicked=false;
 		onBed=false;
 		injured = 0;
-		pInjury = new Injury (-999, 0);
+		pInjury = new Injury ("99999", 0);
 		}
 		
 	void OnEnable(){
@@ -77,11 +78,7 @@ public class Patient : MonoBehaviour {
 			if(Physics.Raycast(ray, out rayHit)) {
 				clicked = rayHit.collider.gameObject;
 				//patientObj = rayHit.collider.gameObject;
-				if(clicked.tag == "Cure"){ //checks if the clicked object is a medicine
-					if (clicked.GetComponent<TypeOfInjury> ().type == pInjury.type) { //checks if the cure is correct for the injury
-						pInjury.Cured = 1;
-					}
-				}else if ((clicked.tag == "Bed") && isClicked&& !clicked.GetComponent<Bed>().isOccupied) { //checks if the clicked obejct is a bed and occupide
+					if ((clicked.tag == "Bed") && isClicked&& !clicked.GetComponent<Bed>().isOccupied) { //checks if the clicked obejct is a bed and occupide
 					transform.position = new Vector3(clicked.transform.position.x,clicked.transform.position.y,-1);
 					isClicked=false;
 					onBed=true;
@@ -127,14 +124,17 @@ public class Patient : MonoBehaviour {
 		if (injured == 0) {
 			int randNum = Random.Range (0, injurySprites.Length);
 			injured = 1;
-			pInjury = new Injury (randNum,0);
+
 			bubbleRenderer.sprite = injurySprites [randNum];
 			if (randNum == 0) {
 				injuryType = "gunshot";
+				pInjury = new Injury (injuryType,0);
 			} else if (randNum == 1) {
 				injuryType = "brokenBone";
+				pInjury = new Injury (injuryType,0);
 			} else if (randNum == 2) {
 				injuryType = "burn";
+				pInjury = new Injury (injuryType,0);
 			}
 
 			bubbleRenderer.gameObject.SetActive (true);
@@ -142,6 +142,7 @@ public class Patient : MonoBehaviour {
 	}
 
 	public void curePatient(){
+		
 		bubbleRenderer.gameObject.SetActive (false);
 		UIManager.instance.updateScore (100);
 
