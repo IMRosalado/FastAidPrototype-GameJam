@@ -119,6 +119,7 @@ public class PlayerManager : MonoBehaviour {
 				ShowBubble (cureType);
 			} else if (hitColliders [i].gameObject.tag == "Trash") {
 				rend.gameObject.SetActive (false);
+				UIManager.instance.updateScore (-50);
 				doesCarry = false;
 			}
 		}
