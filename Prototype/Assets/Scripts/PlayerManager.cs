@@ -61,10 +61,9 @@ public class PlayerManager : MonoBehaviour {
 				if(Physics.Raycast(ray, out rayHit)) {
 					clicked = rayHit.collider.gameObject;
 					if (clicked.tag == "Bed" || clicked.tag == "Cure" || clicked.tag=="Patient") {
-
 						playerIsMoving = true;
-						//pathFinding.MovePlayer (player, clicked, speedPlayer, -1);
-						StartCoroutine("TeleportPlayer",clicked.transform.position);
+						pathFinding.MovePlayer (player, clicked, speedPlayer);
+						//StartCoroutine("TeleportPlayer",clicked.transform.position);
 
 
 					} 
@@ -96,6 +95,15 @@ public class PlayerManager : MonoBehaviour {
 		
 		}
 		playerIsMoving = false;
+		checkSurrounding ();
+	}
+	/* This function is called to stop the movement of the player
+	 * 
+	 * parameters: none
+	 * return: none
+	 * 
+	 * */
+	public void checkSurrounding(){
 		Collider[] hitColliders = Physics.OverlapSphere(transform.position, 0.1f);
 		for (int i = 0; i < hitColliders.Length; i++) {
 			if (hitColliders[i].gameObject.tag=="Patient" && doesCarry){
@@ -103,7 +111,7 @@ public class PlayerManager : MonoBehaviour {
 				doesCarry =false;
 				if(hitColliders[i].gameObject.GetComponent<Patient>().pInjury.type == cureType){
 					Debug.Log(hitColliders[i].gameObject.GetComponent<Patient>().pInjury.type+"+++"+cureType);
-				hitColliders[i].gameObject.GetComponent<Patient>().curePatient ();
+					hitColliders[i].gameObject.GetComponent<Patient>().curePatient ();
 					cureType ="";
 				}
 			}if (hitColliders[i].gameObject.tag== "Cure") {
@@ -113,14 +121,9 @@ public class PlayerManager : MonoBehaviour {
 			}
 		}
 	}
-	/* This function is called to stop the movement of the player
-	 * 
-	 * parameters: none
-	 * return: none
-	 * 
-	 * */
 	public void DontMove(){
 		StopCoroutine ("TeleportPlayer");
+		pathFinding.StopMovement();
 	}
 	#endregion
 

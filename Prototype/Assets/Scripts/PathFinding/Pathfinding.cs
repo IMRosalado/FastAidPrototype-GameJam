@@ -20,8 +20,8 @@ public class Pathfinding : MonoBehaviour {
 		playerGameObject = GameObject.FindGameObjectWithTag ("Player");
 	}		
 
-	public void MovePlayer (GameObject source, GameObject destination, float sourceSpeed, int index){
-		FindPath (source,destination, index);
+	public void MovePlayer (GameObject source, GameObject destination, float sourceSpeed){
+		FindPath (source,destination);
 		StartCoroutine (MovePlayerTransition (source, destination, sourceSpeed));
 	}
 
@@ -38,12 +38,16 @@ public class Pathfinding : MonoBehaviour {
 			}
 		}
 		PlayerManager.instance.playerIsMoving = false;
+		Debug.Log ("END");
+		PlayerManager.instance.checkSurrounding ();
 	}
 
-		
+	public void StopMovement(){
+		StopCoroutine ("MovePlayerTransition");
+	}
 
 
-	void FindPath(GameObject startPos, GameObject targetPos, int index) {
+	void FindPath(GameObject startPos, GameObject targetPos) {
 		
 		Node startNode = grid.NodeFromWorldPoint(startPos.transform.position);
 
@@ -65,7 +69,7 @@ public class Pathfinding : MonoBehaviour {
 			closedSet.Add(currentNode);
 
 			if (currentNode == targetNode) {
-				RetracePath(startNode,targetNode, startPos, index);
+				RetracePath(startNode,targetNode, startPos);
 				return;
 			}
 
@@ -87,7 +91,7 @@ public class Pathfinding : MonoBehaviour {
 		}
 	}
 
-	void RetracePath(Node startNode, Node endNode, GameObject source,int index) {
+	void RetracePath(Node startNode, Node endNode, GameObject source) {
 		List<Node> path = new List<Node> ();
 		List<Vector3> dir = new List<Vector3>();
 		Node currentNode = endNode;
