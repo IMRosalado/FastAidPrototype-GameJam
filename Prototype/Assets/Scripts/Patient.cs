@@ -136,7 +136,7 @@ public class Patient : MonoBehaviour {
 				injuryType = "burn";
 				pInjury = new Injury (injuryType,0);
 			}
-
+			Debug.Log(injuryType+"-----");
 			bubbleRenderer.gameObject.SetActive (true);
 		}
 	}

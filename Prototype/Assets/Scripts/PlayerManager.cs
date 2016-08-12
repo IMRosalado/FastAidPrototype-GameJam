@@ -104,17 +104,18 @@ public class PlayerManager : MonoBehaviour {
 	 * 
 	 * */
 	public void checkSurrounding(){
-		Collider[] hitColliders = Physics.OverlapSphere(transform.position, 0.1f);
+		Collider[] hitColliders = Physics.OverlapSphere(transform.position, 1f);
 		for (int i = 0; i < hitColliders.Length; i++) {
 			if (hitColliders[i].gameObject.tag=="Patient" && doesCarry){
+				//Debug.Log("PATIENT");
 				rend.gameObject.SetActive (false);
 				doesCarry =false;
-				if(hitColliders[i].gameObject.GetComponent<Patient>().pInjury.type == cureType){
-					Debug.Log(hitColliders[i].gameObject.GetComponent<Patient>().pInjury.type+"+++"+cureType);
+				Debug.Log(hitColliders[i].gameObject.GetComponent<Patient>().pInjury.type+"+++"+cureType);
+				if(hitColliders[i].gameObject.GetComponent<Patient>().injuryType== cureType){
 					hitColliders[i].gameObject.GetComponent<Patient>().curePatient ();
 					cureType ="";
 				}
-			}if (hitColliders[i].gameObject.tag== "Cure") {
+			}else if (hitColliders[i].gameObject.tag== "Cure") {
 				doesCarry =true;
 				cureType=clicked.GetComponent<TypeOfInjury>().type;
 				ShowBubble(cureType);
@@ -135,7 +136,7 @@ public class PlayerManager : MonoBehaviour {
 	 * 
 	 * */
 	void ShowBubble(string x){
-		Debug.Log("++++"+x);
+		
 		if (x=="gunshot") {
 			rend.sprite = bubSprite [1];
 		} else if (x=="brokenBone") {
