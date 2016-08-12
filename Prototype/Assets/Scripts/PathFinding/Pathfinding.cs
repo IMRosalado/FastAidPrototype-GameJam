@@ -10,6 +10,7 @@ public class Pathfinding : MonoBehaviour {
 	private GameObject playerGameObject;
 	private List<Node> pathPlayer= new List<Node> ();
 	private Grid grid;
+	private Coroutine cor = null;
 
 	private int []prev;
 
@@ -22,7 +23,7 @@ public class Pathfinding : MonoBehaviour {
 
 	public void MovePlayer (GameObject source, GameObject destination, float sourceSpeed){
 		FindPath (source,destination);
-		StartCoroutine (MovePlayerTransition (source, destination, sourceSpeed));
+		cor = StartCoroutine (MovePlayerTransition (source, destination, sourceSpeed));
 	}
 
 	IEnumerator MovePlayerTransition(GameObject source, GameObject destination, float sourceSpeed){
@@ -43,7 +44,9 @@ public class Pathfinding : MonoBehaviour {
 	}
 
 	public void StopMovement(){
-		StopCoroutine ("MovePlayerTransition");
+		if (cor!=null)
+			StopCoroutine (cor);
+		PlayerManager.instance.playerIsMoving = false;
 	}
 
 

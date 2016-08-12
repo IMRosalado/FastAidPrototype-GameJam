@@ -60,7 +60,7 @@ public class PlayerManager : MonoBehaviour {
 				ray = Camera.main.ScreenPointToRay (Input.mousePosition);
 				if(Physics.Raycast(ray, out rayHit)) {
 					clicked = rayHit.collider.gameObject;
-					if (clicked.tag == "Bed" || clicked.tag == "Cure" || clicked.tag=="Patient") {
+					if (clicked.tag == "Bed" || clicked.tag == "Cure" || clicked.tag=="Patient"|| clicked.tag=="Trash") {
 						playerIsMoving = true;
 						pathFinding.MovePlayer (player, clicked, speedPlayer);
 						//StartCoroutine("TeleportPlayer",clicked.transform.position);
@@ -106,24 +106,26 @@ public class PlayerManager : MonoBehaviour {
 	public void checkSurrounding(){
 		Collider[] hitColliders = Physics.OverlapSphere(transform.position, 1f);
 		for (int i = 0; i < hitColliders.Length; i++) {
-			if (hitColliders[i].gameObject.tag=="Patient" && doesCarry){
-				//Debug.Log("PATIENT");
-				rend.gameObject.SetActive (false);
-				doesCarry =false;
-				Debug.Log(hitColliders[i].gameObject.GetComponent<Patient>().pInjury.type+"+++"+cureType);
-				if(hitColliders[i].gameObject.GetComponent<Patient>().injuryType== cureType){
-					hitColliders[i].gameObject.GetComponent<Patient>().curePatient ();
-					cureType ="";
+			if (hitColliders [i].gameObject.tag == "Patient" && doesCarry) {
+				if (hitColliders [i].gameObject.GetComponent<Patient> ().injuryType == cureType) {
+					rend.gameObject.SetActive (false);
+					doesCarry = false;
+					hitColliders [i].gameObject.GetComponent<Patient> ().curePatient ();
+					cureType = "";
 				}
-			}else if (hitColliders[i].gameObject.tag== "Cure") {
-				doesCarry =true;
-				cureType=clicked.GetComponent<TypeOfInjury>().type;
-				ShowBubble(cureType);
+			} else if (hitColliders [i].gameObject.tag == "Cure") {
+				doesCarry = true;
+				cureType = clicked.GetComponent<TypeOfInjury> ().type;
+				ShowBubble (cureType);
+			} else if (hitColliders [i].gameObject.tag == "Trash") {
+				rend.gameObject.SetActive (false);
+				doesCarry = false;
 			}
 		}
 	}
 	public void DontMove(){
 		StopCoroutine ("TeleportPlayer");
+		Debug.Log ("STOP");
 		pathFinding.StopMovement();
 	}
 	#endregion
